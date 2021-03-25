@@ -6,6 +6,8 @@ Deakin University
 Student: Angus Maiden
 Student ID: 220595465
 
+
+The environment is a fully functional Gym API. It can be downloaded and installed as follows:
 ```bash
 git clone https://github.com/AngusMaiden/rl-gym-maze
 pip install -e ./rl-gym-maze
