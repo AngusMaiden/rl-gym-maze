@@ -3,8 +3,6 @@ A Maze Environment for Reinforcement Learning Solutions in OpenAI Gym
 
 
 ## SIT796 Reinforcement Learning
----
-
 ### Task 1.2C - Policy Definition
 by Angus Maiden (Student ID: 220595465), Deakin University
 
