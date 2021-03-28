@@ -11,7 +11,7 @@ class Action(Enum):
     LEFT = 2
     RIGHT = 3
 
-# Types of squares are a vector of four boolean values, indicating if a wall is at a direction (Up, Down, Left, Right)
+# Types of squares are a vector of four boolean values, indicating if a wall is at a direction (Up, Down, Left, Right).
 a = [0,0,0,1]
 b = [0,0,1,0]
 c = [0,1,0,0]
