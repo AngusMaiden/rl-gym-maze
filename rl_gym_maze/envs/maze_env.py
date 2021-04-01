@@ -55,7 +55,7 @@ class MazeEnv(gym.Env):
         self.action_space = spaces.Discrete(4)
 
         # Define observation space as a 'Box space', bounded by (0,0) and (9,9), of integers (i.e. discrete values).
-        self.observation_space = spaces.Box(low=0, high=9, shape=(2,), dtype=np.int64)        
+        self.observation_space = spaces.Box(low=0, high=9, shape=(2,), dtype=np.uint8)        
 
     # Gym's step function takes an action from the action space, and returns (observation, reward, done, info).
     def step(self, action):     
@@ -76,30 +76,37 @@ class MazeEnv(gym.Env):
         if action == Action.UP.value:
             if self.map[self.location][0] != 1:
                 self.location = (self.location[0]-1, self.location[1])
-            reward = -1
+                reward = 0
+            else:
+                reward = -1
 
         elif action == Action.DOWN.value:
             if self.map[self.location][1] != 1:
                 self.location = (self.location[0]+1, self.location[1])
-            reward = -1
+                reward = 0
+            else:
+                reward = -1
 
         elif action == Action.LEFT.value:
             if self.map[self.location][2] != 1:
                 self.location = (self.location[0], self.location[1]-1)
-            reward = -1
+                reward = 0
+            else:
+                reward = -1
 
         elif action == Action.RIGHT.value:
             if self.map[self.location][3] != 1:
                 self.location = (self.location[0], self.location[1]+1)
-            reward = -1
-        
+                reward = 0
+            else:
+                reward = -1
         else:
             print("Invalid action")
             raise ValueError
 
         # If after these updates, the new location is the goal, the task is complete.
         if self.location == self.goal_location:
-            reward = 0
+            reward = 100
             done = True
         
         state = np.array(self.location)
