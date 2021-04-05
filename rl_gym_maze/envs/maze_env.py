@@ -76,30 +76,30 @@ class MazeEnv(gym.Env):
         if action == Action.UP.value:
             if self.map[self.location][0] != 1:
                 self.location = (self.location[0]-1, self.location[1])
-                reward = 0
-            else:
                 reward = -1
+            else:
+                reward = -3
 
         elif action == Action.DOWN.value:
             if self.map[self.location][1] != 1:
                 self.location = (self.location[0]+1, self.location[1])
-                reward = 0
-            else:
                 reward = -1
+            else:
+                reward = -3
 
         elif action == Action.LEFT.value:
             if self.map[self.location][2] != 1:
                 self.location = (self.location[0], self.location[1]-1)
-                reward = 0
-            else:
                 reward = -1
+            else:
+                reward = -3
 
         elif action == Action.RIGHT.value:
             if self.map[self.location][3] != 1:
                 self.location = (self.location[0], self.location[1]+1)
-                reward = 0
-            else:
                 reward = -1
+            else:
+                reward = -3
         else:
             print("Invalid action")
             raise ValueError
