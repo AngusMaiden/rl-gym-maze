@@ -76,22 +76,30 @@ class MazeEnv(gym.Env):
         if action == Action.UP.value:
             if self.map[self.location][0] != 1:
                 self.location = (self.location[0]-1, self.location[1])
-            reward = -1
+                reward = -1
+            else:
+                reward = -2
 
         elif action == Action.DOWN.value:
             if self.map[self.location][1] != 1:
                 self.location = (self.location[0]+1, self.location[1])
-            reward = -1
+                reward = -1
+            else:
+                reward = -2
 
         elif action == Action.LEFT.value:
             if self.map[self.location][2] != 1:
                 self.location = (self.location[0], self.location[1]-1)
-            reward = -1
+                reward = -1
+            else:
+                reward = -2
 
         elif action == Action.RIGHT.value:
             if self.map[self.location][3] != 1:
                 self.location = (self.location[0], self.location[1]+1)
-            reward = -1
+                reward = -1
+            else:
+                reward = -2
 
         else:
             print("Invalid action")
@@ -99,16 +107,16 @@ class MazeEnv(gym.Env):
 
         # If after these updates, the new location is the goal, the task is complete.
         if self.location == self.goal_location:
-            reward = 0
+            reward = 10
             done = True
         
-        state = np.array(self.location)
+        state = self.location
         return state, reward, done, info
     
     # Resetting function.
     def reset(self):
         self.location = (0,0)
-        return np.array(self.location)
+        return self.location
     
     # Rendering funtion. Not required for the purpose of this task.
     def render(self, mode='human'):
