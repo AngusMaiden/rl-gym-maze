@@ -71,39 +71,30 @@ class MazeEnv(gym.Env):
         # If there is no wall there (0 value in that direction in the Boolean vector),
         # we update the location and give reward (penalty).
 
-        # If there is a wall in that direction, the location is not updated but a penalty is given.
+        # If there is a wall in that direction, the location is not updated.
 
         if action == Action.UP.value:
             if self.map[self.location][0] != 1:
                 self.location = (self.location[0]-1, self.location[1])
-                reward = -1
-            else:
-                reward = -2
+            reward = -1
 
         elif action == Action.DOWN.value:
             if self.map[self.location][1] != 1:
                 self.location = (self.location[0]+1, self.location[1])
-                reward = -1
-            else:
-                reward = -2
+            reward = -1
 
         elif action == Action.LEFT.value:
             if self.map[self.location][2] != 1:
                 self.location = (self.location[0], self.location[1]-1)
-                reward = -1
-            else:
-                reward = -2
+            reward = -1
 
         elif action == Action.RIGHT.value:
             if self.map[self.location][3] != 1:
                 self.location = (self.location[0], self.location[1]+1)
-                reward = -1
-            else:
-                reward = -2
+            reward = -1
 
         else:
-            print("Invalid action")
-            raise ValueError
+            raise ValueError("Invalid action")
 
         # If after these updates, the new location is the goal, the task is complete.
         if self.location == self.goal_location:
